@@ -83,27 +83,27 @@ def output():
     if seedbox.value == "death(tobaco)" and red.value + green.value >= 150:
         crop.value = "gold leaf"
 
-app = App(title="farm helper", layout="grid", width = 260, height = 460)
+app = App(title="farm helper", width = 470, height = 340)
 
-red_lable = Text(app, text= "red", grid = [0,0], align ="left", color = "red")
-red = Slider(app, grid=[1,0], command = output)
+seed_lable = Text(app, text="seeds", align = "left")
+seedbox = ButtonGroup(app, options=["nothing","cotton","cereal","pumkin","cabbage","corn","potato","death(tobaco)"], command = output, align = "left")
 
-green_lable = Text(app, text= "green", grid = [0,2], align = "left", color = (0,150,0))
-green = Slider(app, grid=[1,2], command = output)
+pumkin_lable = Text(app, text="pumkin stage", align = "right")
+pumkin_stage = ButtonGroup(app,options = ["1","2","3"], command = output, align="right")
 
-blue_lable = Text(app, text="blue", grid = [0,3], align = "left", color = "blue")
-blue = Slider(app,grid=[1,3], command = output)
+red_lable = Text(app, text= "red", color = "red")
+red = Slider(app, command = output)
 
-pink_lable = Text(app, text="pink", grid = [0,4], align = "left", color = "purple")
-pink = Slider(app,grid=[1,4], command = output)
+green_lable = Text(app, text= "green", color = (0,150,0))
+green = Slider(app, command = output)
 
-seed_lable = Text(app, text="seeds",grid = [0,5], align = "left")
-seedbox = ButtonGroup(app, options=["nothing","cotton","cereal","pumkin","cabbage","corn","potato","death(tobaco)"], grid=[1,5], command = output)
+blue_lable = Text(app, text="blue", color = "blue")
+blue = Slider(app, command = output)
 
-pumkin_lable = Text(app, text="pumkin stage", align = "right", grid = [2,3])
-pumkin_stage = ButtonGroup(app,options = ["1","2","3"],grid = [2,4], command = output)
+pink_lable = Text(app, text="pink", color = "purple")
+pink = Slider(app, command = output)
 
-crop_lable = Text(app, text="output", grid= [1,6], align = "bottom")
-crop = Text(app, text="pick a seed", grid= [1,7], align="bottom")
+crop = Text(app, text="pick a seed", align="bottom")
+crop_lable = Text(app, text="output", align="bottom")
 
 app.display()
