@@ -1,5 +1,17 @@
-from guizero import App, Text, ButtonGroup, Slider
+from guizero import App, Text, ButtonGroup, Slider, TextBox
 
+
+def plenty():
+    global season, seedtype
+    if season_but.value == "ever":
+        season = 50
+    if season_but.value == "cold":
+        season = 0
+    if crop.value == "cotton":
+        seedtype = 20
+    season + plenty_box.value // seedtype = plenty_out.value
+    
+    
 def output():
     if seedbox.value == "nothing":
         crop.value = "pick a seed"
@@ -83,7 +95,7 @@ def output():
     if seedbox.value == "death(tobaco)" and red.value + green.value >= 150:
         crop.value = "gold leaf"
 
-app = App(title="farm helper", width = 470, height = 340)
+app = App(title="farm helper", width = 470, height = 500)
 
 seed_lable = Text(app, text="seeds", align = "left")
 seedbox = ButtonGroup(app, options=["nothing","cotton","cereal","pumkin","cabbage","corn","potato","death(tobaco)"], command = output, align = "left")
@@ -105,5 +117,14 @@ pink = Slider(app, command = output)
 
 crop = Text(app, text="pick a seed", align="bottom")
 crop_lable = Text(app, text="output", align="bottom")
+
+season_lable = Text(app, text= "season planted", color = (0,0,0))
+season_but = ButtonGroup(app,options = ["ever","cold"], command = plenty)
+season = 0
+seedtype = 0
+
+plenty_lable = Text(app, text= "plenty", color = (0,0,0))
+plenty_box = TextBox(app, command= plenty)
+plenty_out = Text(app, text= "0")
 
 app.display()
