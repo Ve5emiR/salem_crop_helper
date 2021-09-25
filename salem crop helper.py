@@ -1,15 +1,22 @@
 from guizero import App, Text, ButtonGroup, Slider, TextBox
 
 
+######veriables
+
+season = 0
+seed_type = 0 
+answer = season + seed_type // 20
+
+######functions
+
 def plenty():
-    global season, seedtype
+    global season, seed_type
     if season_but.value == "ever":
-        season = 50
+        season = season + 50
     if season_but.value == "cold":
         season = 0
     if crop.value == "cotton":
-        seedtype = 20
-    season + plenty_box.value // seedtype = plenty_out.value
+        seed_type = seed_type + 20
     
     
 def output():
@@ -94,6 +101,9 @@ def output():
         crop.value = "shade leaf"
     if seedbox.value == "death(tobaco)" and red.value + green.value >= 150:
         crop.value = "gold leaf"
+        
+        
+#####applcations
 
 app = App(title="farm helper", width = 470, height = 500)
 
@@ -120,11 +130,9 @@ crop_lable = Text(app, text="output", align="bottom")
 
 season_lable = Text(app, text= "season planted", color = (0,0,0))
 season_but = ButtonGroup(app,options = ["ever","cold"], command = plenty)
-season = 0
-seedtype = 0
 
 plenty_lable = Text(app, text= "plenty", color = (0,0,0))
 plenty_box = TextBox(app, command= plenty)
-plenty_out = Text(app, text= "0")
+plenty_out = Text(app, text = answer)
 
 app.display()
